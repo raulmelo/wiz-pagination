@@ -1,4 +1,4 @@
-# @wizsolucoes WizToggle
+# @wizsolucoes WizRadio
 Modulo Angular 4+
 
 ## Configuração do módulo (app.module.ts)
@@ -6,12 +6,12 @@ Modulo Angular 4+
 Módulo simples de modal.
 
 ```ts
-import { WizToggleModule } from '@wizsolucoes/wiz-toggle';
+import { WizRadioModule } from '@wizsolucoes/wiz-radio';
 
 @NgModule({
   declarations: [],
   imports: [
-    WizToggleModule,
+    WizRadioModule,
   ]
 
 ```
@@ -21,9 +21,12 @@ import { WizToggleModule } from '@wizsolucoes/wiz-toggle';
 Chamando o componente no html
 
 ```html
-<wiz-toggle [disabled]=false (returnEvent)="teste($event)">
-  Ativar
-</wiz-toggle>
+<wiz-radio 
+(returnEvent)="teste($event)" 
+[disabled]=true 
+value="teste1"
+name="testeName">
+</wiz-radio>
 
 ```
 
@@ -33,6 +36,24 @@ Chamando o componente no html
   [disabled]=false
   [disabled]=true
 ```
+
+
+> **value:** *Valor emitido pelo evento*
+
+```ts
+  value="sim"
+  value="nao"
+
+  value="true"
+  value="false"
+```
+
+> **name:** *Name dos radios do formgroup*
+
+```ts
+ name="testeName">
+```
+
 
 > **(returnEvent)="teste($event)":** *Evento emitido*
 

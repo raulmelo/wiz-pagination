@@ -1,0 +1,70 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "wiz-rating": [
+        "dist/wiz-rating"
+      ],
+      "wiz-rating/*": [
+        "dist/wiz-rating/*"
+      ],
+      "wiz-tags": [
+        "dist/wiz-tags"
+      ],
+      "wiz-tags/*": [
+        "dist/wiz-tags/*"
+      ],
+      "wiz-copy": [
+        "dist/wiz-copy"
+      ],
+      "wiz-copy/*": [
+        "dist/wiz-copy/*"
+      ],
+      "wiz-modal": [
+        "dist/wiz-modal"
+      ],
+      "wiz-modal/*": [
+        "dist/wiz-modal/*"
+      ],
+      "wiz-toggle": [
+        "dist/wiz-toggle"
+      ],
+      "wiz-toggle/*": [
+        "dist/wiz-toggle/*"
+      ],
+      "wiz-radio": [
+        "dist/wiz-radio"
+      ],
+      "wiz-radio/*": [
+        "dist/wiz-radio/*"
+      ],
+      "wiz-pagination": [
+        "dist/wiz-pagination"
+      ],
+      "wiz-pagination/*": [
+        "dist/wiz-pagination/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}
