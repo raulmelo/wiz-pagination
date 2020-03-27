@@ -13,7 +13,7 @@ export class WizPaginationComponent implements OnInit {
   public maxItem: number;
   public firstNumber: number;
   public lastNumber: number;
-  
+
   public itens = [
     { 'value': 1 },
     { 'value': 2 },
@@ -35,7 +35,6 @@ export class WizPaginationComponent implements OnInit {
     if (this.itens.length != 0) {
       this.firstNumber = this.itens[0].value;
     }
-    console.log(this.itens.filter(x => x.value === e));
     if (this.itens.filter(x => x.value === e).length !== 0) {
       this.valueSelect = e;
       this.filterItensMin = this.itens.filter(x => x.value < e);
@@ -52,9 +51,6 @@ export class WizPaginationComponent implements OnInit {
       } else {
         this.lastNumber = this.itens[this.itens.length - 1].value;
       }
-
-
-      console.log(this.filterItensMin);
     }
   }
 }
