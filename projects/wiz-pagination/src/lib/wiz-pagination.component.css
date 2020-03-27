@@ -25,6 +25,9 @@
 .icon-back {
   margin-right: 20px;
 }
+.initial{
+  display: flex;
+}
 
 .item {
   cursor: pointer;

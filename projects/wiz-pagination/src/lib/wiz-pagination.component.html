@@ -1,5 +1,5 @@
 <div class="wiz-pagination">
-  <div class="icon-back">
+  <div (click)="select(valueSelect -1)" class="icon-back">
     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
       <path fill="#fff" d="M-12-9h32v32h-32z" />
       <g transform="rotate(-270 4 7)">
@@ -10,19 +10,39 @@
   </div>
 
   <div class="content-icons">
-    <div *ngFor="let item of itens; index as i;">
-      <label (click)="select(item)" [ngClass]="{'active' : valueSelect === item.value}" class="item" *ngIf="i+1 <= 3"
-        for="">{{item.value}}</label>
+    <div *ngIf="!filterItensMin" class="initial">
+      <div *ngFor="let item of itens; index as i;">
+        <label (click)="select(item.value)" [ngClass]="{'active' : valueSelect === item.value}" class="item"
+          *ngIf="i+1 <= 3" for="">{{item.value}}</label>
+      </div>
+
+      <div class="complement">...</div>
+
+      <label [ngClass]="{'active' : valueSelect === itens.length}" (click)="select(itens[itens.length - 1].value)"
+        class="item">{{itens.length}}</label>
     </div>
 
-    <div class="complement">...</div>
+    <div *ngIf="filterItensMin" class="initial">
 
-    <label [ngClass]="{'active' : valueSelect === itens.length}" (click)="select(itens[itens.length -1])" class="item">{{itens.length}}</label>
+      <label *ngIf="valueSelect === lastNumber" (click)="select(firstNumber)" class="item" for="">{{firstNumber}}</label>
+      <div *ngIf="valueSelect === lastNumber" class="complement">...</div>
+      <label *ngIf="minItem" (click)="select(minItem)" class="item" for="">{{minItem}}</label>
 
+
+      <label (click)="select(valueSelect)" class="item active" for="">{{valueSelect}}</label>
+
+      <label *ngIf="valueSelect !== lastNumber && lastNumber-1 !== valueSelect" (click)="select(maxItem)" class="item"
+        for="">{{maxItem}}</label>
+
+      <div *ngIf="valueSelect !== lastNumber && lastNumber !== null " class="complement">...</div>
+
+      <label *ngIf="valueSelect !== lastNumber && lastNumber !== null" (click)="select(lastNumber)" class="item"
+        for="">{{lastNumber}}</label>
+    </div>
   </div>
 
 
-  <div class="icon-next">
+  <div (click)="select(valueSelect +1)" class="icon-next">
     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
       <path fill="#fff" d="M-12-9h32v32h-32z" />
       <g transform="rotate(-90 4 7)">
