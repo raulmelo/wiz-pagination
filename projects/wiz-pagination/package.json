@@ -1,6 +1,14 @@
 {
-  "name": "wiz-pagination",
-  "version": "0.0.1",
+  "name": "@wizsolucoes/wiz-pagination",
+  "version": "1.0.0",
+  "description": "Pagination é o nosso componente de comunicação numérica de elementos ( páginas, comentários, artigos, imagens…) com o objetivo de carregamento dentro de um determinado contexto. Seu foco é mostrar ao usuário onde ele está e permitir que tenha acesso direto ao item de conteúdo anterior ou subsequente. É possível simbolizá-las por meio de elementos gráficos.",
+  "author": "Hugo dos Santos Ricchino Rosello",
+  "license": "ISC",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wizsolucoes/wiz-pagination"
+  },
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
