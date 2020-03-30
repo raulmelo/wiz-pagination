@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'wiz-pagination',
@@ -7,6 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class WizPaginationComponent implements OnInit {
   @Input() valueSelect: number;
+  @Input() list: any;
+  @Output() eventPagination: any = new EventEmitter();
+  @Input() type: any;
+
+
+
   public filterItensMin: any;
   public filterItensMax: any;
   public minItem: number;
@@ -14,15 +20,7 @@ export class WizPaginationComponent implements OnInit {
   public firstNumber: number;
   public lastNumber: number;
 
-  public itens = [
-    { 'value': 1 },
-    { 'value': 2 },
-    { 'value': 3 },
-    { 'value': 4 },
-    { 'value': 5 },
-    { 'value': 6 },
-    { 'value': 7 },
-  ]
+
 
   constructor() { }
 
@@ -32,13 +30,13 @@ export class WizPaginationComponent implements OnInit {
   }
 
   select(e) {
-    if (this.itens.length != 0) {
-      this.firstNumber = this.itens[0].value;
+    if (this.list.length !== 0) {
+      this.firstNumber = this.list[0].value;
     }
-    if (this.itens.filter(x => x.value === e).length !== 0) {
+    if (this.list.filter(x => x.value === e).length !== 0) {
       this.valueSelect = e;
-      this.filterItensMin = this.itens.filter(x => x.value < e);
-      this.filterItensMax = this.itens.filter(x => x.value > e);
+      this.filterItensMin = this.list.filter(x => x.value < e);
+      this.filterItensMax = this.list.filter(x => x.value > e);
 
       if (this.filterItensMin.length !== 0) {
         this.minItem = this.filterItensMin.pop().value;
@@ -49,9 +47,10 @@ export class WizPaginationComponent implements OnInit {
         this.maxItem = this.filterItensMax[0].value;
         this.lastNumber = this.filterItensMax.pop().value;
       } else {
-        this.lastNumber = this.itens[this.itens.length - 1].value;
+        this.lastNumber = this.list[this.list.length - 1].value;
       }
     }
+    this.eventPagination.emit(this.valueSelect);
   }
 }
 

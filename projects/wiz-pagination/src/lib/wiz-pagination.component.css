@@ -15,7 +15,7 @@
 }
 .content-icons {
   display: flex;
-  /* cursor: pointer; */
+  align-items: flex-start;
 }
 
 .icon-next {
@@ -24,11 +24,16 @@
 }
 .icon-back {
   margin-right: 20px;
+  cursor: pointer;
 }
-.initial{
+.initial {
   display: flex;
 }
 
+
+.active-simple{
+  color: #50555a;
+}
 .item {
   cursor: pointer;
   margin: 0px 4px;
@@ -47,10 +52,53 @@
   margin: 0px 16px;
 }
 
+.simple-label {
+  margin: 0px 0px;
+}
+
+.complement-simple {
+  margin: 0px 0px;
+}
+
 .filter {
+  display: flex;
+}
+.default {
   display: flex;
 }
 
 .active {
   border-bottom: solid 2px #ff9100;
+  margin-bottom: -2px;
+  color: #50555a;
+}
+
+
+
+.item-indicator {
+  display: inline-block;
+  /* margin: 0px 2px !important; */
+  width: 16px;
+  height: 10px;
+  background-color: #eaeef0;
+  border-radius: 4px;
+  transition: width 0.2s ease-in;
+  cursor: pointer;
+
+}
+
+.itens{
+  display: flex;
+  justify-content: center;
+  width: 18px;
+}
+
+.active-indicator{
+  width: 24px;
+  background-color: #ff9100;
+}
+
+.content-indicator{
+  display: flex;
+  text-align: left;
 }
