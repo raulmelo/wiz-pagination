@@ -25,8 +25,9 @@ export class WizPaginationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-    this.select(this.valueSelect);
+    if (this.list) {
+      this.select(this.valueSelect);
+    }
   }
 
   select(e) {

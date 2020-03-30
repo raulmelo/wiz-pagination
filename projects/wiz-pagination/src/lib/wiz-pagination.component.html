@@ -1,75 +1,51 @@
-<div *ngIf="type =='default'" class="wiz-pagination">
-  <div class="default">
-    <div (click)="select(valueSelect -1)" class="icon-back">
-      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
-        <path fill="#fff" d="M-12-9h32v32h-32z" />
-        <g transform="rotate(-270 4 7)">
-          <path fill="#ff9100"
-            d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
-        </g>
-      </svg>
-    </div>
+<div *ngIf="list" class="wiz-pagination-content">
+  <div *ngIf="type =='default'" class="wiz-pagination">
+    <div class="wiz-default">
+      <div (click)="select(valueSelect -1)" class="wiz-icon-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
+          <path fill="#fff" d="M-12-9h32v32h-32z" />
+          <g transform="rotate(-270 4 7)">
+            <path fill="#ff9100"
+              d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
+          </g>
+        </svg>
+      </div>
 
-    <div class="content-icons">
-      <div *ngIf="!filterItensMin" class="initial">
-        <div *ngFor="let item of list; index as i;">
-          <label (click)="select(item.value)" [ngClass]="{'active' : valueSelect === item.value}" class="item"
-            *ngIf="i+1 <= 3" for="">{{item.value}}</label>
+      <div class="wiz-content-icons">
+        <div *ngIf="!filterItensMin" class="wiz-initial">
+          <div *ngFor="let item of list; index as i;">
+            <label (click)="select(item.value)" [ngClass]="{'active' : valueSelect === item.value}" class="item"
+              *ngIf="i+1 <= 3" for="">{{item.value}}</label>
+          </div>
+
+          <div class="wiz-complement">...</div>
+
+          <label [ngClass]="{'active' : valueSelect === list.length}" (click)="select(list[list.length - 1].value)"
+            class="item">{{list.length}}</label>
         </div>
 
-        <div class="complement">...</div>
+        <div *ngIf="filterItensMin" class="wiz-initial">
 
-        <label [ngClass]="{'active' : valueSelect === list.length}" (click)="select(list[list.length - 1].value)"
-          class="item">{{list.length}}</label>
+          <label *ngIf="valueSelect === lastNumber" (click)="select(firstNumber)" class="item"
+            for="">{{firstNumber}}</label>
+          <div *ngIf="valueSelect === lastNumber" class="wiz-complement">...</div>
+          <label *ngIf="minItem" (click)="select(minItem)" class="item" for="">{{minItem}}</label>
+
+
+          <label (click)="select(valueSelect)" class="item active" for="">{{valueSelect}}</label>
+
+          <label *ngIf="valueSelect !== lastNumber && lastNumber-1 !== valueSelect" (click)="select(maxItem)"
+            class="item" for="">{{maxItem}}</label>
+
+          <div *ngIf="valueSelect !== lastNumber && lastNumber !== null " class="wiz-complement">...</div>
+
+          <label *ngIf="valueSelect !== lastNumber && lastNumber !== null" (click)="select(lastNumber)" class="item"
+            for="">{{lastNumber}}</label>
+        </div>
       </div>
 
-      <div *ngIf="filterItensMin" class="initial">
 
-        <label *ngIf="valueSelect === lastNumber" (click)="select(firstNumber)" class="item"
-          for="">{{firstNumber}}</label>
-        <div *ngIf="valueSelect === lastNumber" class="complement">...</div>
-        <label *ngIf="minItem" (click)="select(minItem)" class="item" for="">{{minItem}}</label>
-
-
-        <label (click)="select(valueSelect)" class="item active" for="">{{valueSelect}}</label>
-
-        <label *ngIf="valueSelect !== lastNumber && lastNumber-1 !== valueSelect" (click)="select(maxItem)" class="item"
-          for="">{{maxItem}}</label>
-
-        <div *ngIf="valueSelect !== lastNumber && lastNumber !== null " class="complement">...</div>
-
-        <label *ngIf="valueSelect !== lastNumber && lastNumber !== null" (click)="select(lastNumber)" class="item"
-          for="">{{lastNumber}}</label>
-      </div>
-    </div>
-
-
-    <div (click)="select(valueSelect +1)" class="icon-next">
-      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
-        <path fill="#fff" d="M-12-9h32v32h-32z" />
-        <g transform="rotate(-90 4 7)">
-          <path fill="#ff9100"
-            d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
-        </g>
-      </svg>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="type =='selector'" class="wiz-pagination">
-  <div class="simple">
-    <div class="content-icons">
-      <div (click)="select(valueSelect -1)" class="icon-back">
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
-          <path fill="#fff" d="M-12-9h32v32h-32z" />
-          <g transform="rotate(-270 4 7)">
-            <path fill="#ff9100"
-              d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
-          </g>
-        </svg>
-      </div>
-
-      <div (click)="select(valueSelect +1)" class="icon-next">
+      <div (click)="select(valueSelect +1)" class="wiz-icon-next">
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
           <path fill="#fff" d="M-12-9h32v32h-32z" />
           <g transform="rotate(-90 4 7)">
@@ -80,46 +56,72 @@
       </div>
     </div>
   </div>
-</div>
 
+  <div *ngIf="type =='selector'" class="wiz-pagination">
+    <div class="simple">
+      <div class="wiz-content-icons">
+        <div (click)="select(valueSelect -1)" class="wiz-icon-back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
+            <path fill="#fff" d="M-12-9h32v32h-32z" />
+            <g transform="rotate(-270 4 7)">
+              <path fill="#ff9100"
+                d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
+            </g>
+          </svg>
+        </div>
 
-
-<div *ngIf="type =='simple'" class="wiz-pagination">
-  <div class="simple">
-    <div class="content-icons">
-      <div (click)="select(valueSelect -1)" class="icon-back">
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
-          <path fill="#fff" d="M-12-9h32v32h-32z" />
-          <g transform="rotate(-270 4 7)">
-            <path fill="#ff9100"
-              d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
-          </g>
-        </svg>
-      </div>
-
-      <label class="item simple-label active-simple" for="">{{valueSelect}}</label>
-      <div class="complement-simple">/</div>
-      <label class="item simple-label" for="">{{list.length}}</label>
-
-      <div (click)="select(valueSelect +1)" class="icon-next">
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
-          <path fill="#fff" d="M-12-9h32v32h-32z" />
-          <g transform="rotate(-90 4 7)">
-            <path fill="#ff9100"
-              d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
-          </g>
-        </svg>
+        <div (click)="select(valueSelect +1)" class="wiz-icon-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
+            <path fill="#fff" d="M-12-9h32v32h-32z" />
+            <g transform="rotate(-90 4 7)">
+              <path fill="#ff9100"
+                d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
+            </g>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div *ngIf="type =='indicator'" class="wiz-pagination">
-  <div class="content-indicator">
-    <div *ngFor="let item of list; index as i;"  class="itens">
-      <div (click)="select(item.value)"
-        [ngClass]="{'active-indicator' : valueSelect === item.value}" class="item-indicator">
+
+  <div *ngIf="type =='simple'" class="wiz-pagination">
+    <div class="simple">
+      <div class="wiz-content-icons">
+        <div (click)="select(valueSelect -1)" class="wiz-icon-back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
+            <path fill="#fff" d="M-12-9h32v32h-32z" />
+            <g transform="rotate(-270 4 7)">
+              <path fill="#ff9100"
+                d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
+            </g>
+          </svg>
+        </div>
+
+        <label class="item simple-label active-simple" for="">{{valueSelect}}</label>
+        <div class="wiz-complement-simple">/</div>
+        <label class="item simple-label" for="">{{list.length}}</label>
+
+        <div (click)="select(valueSelect +1)" class="wiz-icon-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
+            <path fill="#fff" d="M-12-9h32v32h-32z" />
+            <g transform="rotate(-90 4 7)">
+              <path fill="#ff9100"
+                d="M9.914 3.195a.616.616 0 0 1 .9 0 .69.69 0 0 1 0 .943L4.45 10.805a.616.616 0 0 1-.9 0l-6.364-6.667a.69.69 0 0 1 0-.943.616.616 0 0 1 .9 0L4 9.391z" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="type =='indicator'" class="wiz-pagination">
+    <div class="content-indicator">
+      <div *ngFor="let item of list; index as i;" class="itens">
+        <div (click)="select(item.value)" [ngClass]="{'active-indicator' : valueSelect === item.value}"
+          class="item-indicator">
+        </div>
       </div>
     </div>
   </div>

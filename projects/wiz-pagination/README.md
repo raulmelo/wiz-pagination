@@ -1,24 +1,77 @@
-# WizPagination
+# @wizsolucoes WizPagination
+Modulo Angular 4+
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+## Configuração do módulo (app.module.ts)
 
-## Code scaffolding
+Módulo simples de modal.
 
-Run `ng generate component component-name --project WizPagination` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project WizPagination`.
-> Note: Don't forget to add `--project WizPagination` or else it will be added to the default project in your `angular.json` file. 
+```ts
+import { WizPaginationModule } from '@wizsolucoes/wiz-pagination';
 
-## Build
+@NgModule({
+  declarations: [],
+  imports: [
+    WizPaginationModule,
+  ]
 
-Run `ng build WizPagination` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
 
-## Publishing
+## Chamando componente no HTML (.component.html)
 
-After building your library with `ng build WizPagination`, go to the dist folder `cd dist/wiz-pagination` and run `npm publish`.
+Chamando o componente no html
 
-## Running unit tests
+```html
+<wiz-pagination [list]=itens (eventPagination)="teste($event)" [valueSelect]=3 type="indicator"></wiz-pagination>
 
-Run `ng test WizPagination` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Further help
+```
+## Chamando componente no TS (.component.ts)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+```ts
+  teste(e) {
+    console.log(e);
+  }
+
+  public itens = [
+    { 'value': 1 },
+    { 'value': 2 },
+    { 'value': 3 },
+    { 'value': 4 },
+    { 'value': 5 },
+    { 'value': 6 },
+    { 'value': 7 },
+  ]
+```
+
+## (eventPagination)="teste($event)":** *Evento emitido*
+
+
+```ts
+ (eventPagination)="teste($event)"
+```
+
+
+## valueSelect
+
+
+```ts
+ [valueSelect]=1
+ [valueSelect]=2
+ [valueSelect]=3
+ [valueSelect]=4
+ [valueSelect]=5...
+
+```
+
+## type="indicator"
+
+
+```ts
+type="default"
+type="simple"
+type="selector"
+type="indicator"
+
+```
+

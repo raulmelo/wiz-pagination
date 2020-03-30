@@ -8,9 +8,9 @@ describe('WizPaginationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WizPaginationComponent ]
+      declarations: [WizPaginationComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,19 @@ describe('WizPaginationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('select', () => {
+    const itens = [
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 },
+      { value: 5 },
+      { value: 6 },
+      { value: 7 },
+    ];
+    component.list = itens;
+    component.select(2);
   });
 });

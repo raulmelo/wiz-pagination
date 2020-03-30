@@ -1,4 +1,4 @@
-# @wizsolucoes WizToggle
+# @wizsolucoes WizPagination
 Modulo Angular 4+
 
 ## Configuração do módulo (app.module.ts)
@@ -6,12 +6,12 @@ Modulo Angular 4+
 Módulo simples de modal.
 
 ```ts
-import { WizToggleModule } from '@wizsolucoes/wiz-toggle';
+import { WizPaginationModule } from '@wizsolucoes/wiz-pagination';
 
 @NgModule({
   declarations: [],
   imports: [
-    WizToggleModule,
+    WizPaginationModule,
   ]
 
 ```
@@ -21,24 +21,57 @@ import { WizToggleModule } from '@wizsolucoes/wiz-toggle';
 Chamando o componente no html
 
 ```html
-<wiz-toggle [disabled]=false (returnEvent)="teste($event)">
-  Ativar
-</wiz-toggle>
+<wiz-pagination [list]=itens (eventPagination)="teste($event)" [valueSelect]=3 type="indicator"></wiz-pagination>
+
 
 ```
+## Chamando componente no TS (.component.ts)
 
-> **disabled:** *Desabilitar input*
 
-```ts
-  [disabled]=false
-  [disabled]=true
-```
-
-> **(returnEvent)="teste($event)":** *Evento emitido*
-
-app.component.ts
 ```ts
   teste(e) {
     console.log(e);
   }
+
+  public itens = [
+    { 'value': 1 },
+    { 'value': 2 },
+    { 'value': 3 },
+    { 'value': 4 },
+    { 'value': 5 },
+    { 'value': 6 },
+    { 'value': 7 },
+  ]
 ```
+
+## (eventPagination)="teste($event)":** *Evento emitido*
+
+
+```ts
+ (eventPagination)="teste($event)"
+```
+
+
+## valueSelect
+
+
+```ts
+ [valueSelect]=1
+ [valueSelect]=2
+ [valueSelect]=3
+ [valueSelect]=4
+ [valueSelect]=5...
+
+```
+
+## type="indicator"
+
+
+```ts
+type="default"
+type="simple"
+type="selector"
+type="indicator"
+
+```
+

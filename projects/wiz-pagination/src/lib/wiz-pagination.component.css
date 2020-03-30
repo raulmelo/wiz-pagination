@@ -13,23 +13,22 @@
   align-items: center;
   height: 33px;
 }
-.content-icons {
+.wiz-content-icons {
   display: flex;
   align-items: flex-start;
 }
 
-.icon-next {
+.wiz-icon-next {
   cursor: pointer;
   margin-left: 20px;
 }
-.icon-back {
+.wiz-icon-back {
   margin-right: 20px;
   cursor: pointer;
 }
-.initial {
+.wiz-initial {
   display: flex;
 }
-
 
 .active-simple{
   color: #50555a;
@@ -47,7 +46,7 @@
   margin-left: 20px;
 } */
 
-.complement {
+.wiz-complement {
   /* cursor: pointer; */
   margin: 0px 16px;
 }
@@ -56,14 +55,14 @@
   margin: 0px 0px;
 }
 
-.complement-simple {
+.wiz-complement-simple {
   margin: 0px 0px;
 }
 
 .filter {
   display: flex;
 }
-.default {
+.wiz-default {
   display: flex;
 }
 
