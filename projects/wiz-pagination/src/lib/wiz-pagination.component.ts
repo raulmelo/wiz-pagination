@@ -1,17 +1,26 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'wiz-pagination',
-  templateUrl: './wiz-pagination.component.html',
-  styleUrls: ['./wiz-pagination.component.css']
+  selector: "wiz-pagination",
+  templateUrl: "./wiz-pagination.component.html",
+  styleUrls: ["./wiz-pagination.component.css"]
 })
-export class WizPaginationComponent implements OnInit {
-  @Input() valueSelect: number;
-  @Input() list: any;
+export class WizPaginationComponent {
+  @Input() valueSelect: number = 1;
   @Output() eventPagination: any = new EventEmitter();
-  @Input() type: any;
+  @Input() type: "default" | "simple" | "selector" | "indicator" = 'default';
 
-
+  public list: any;
+  @Input('total') set total(value: number) {
+    this.list = new Array(value).fill(0).map((_: any, index: number) => {
+      return {
+        value: index + 1
+      };
+    });
+    if (this.list) {
+      this.select(this.valueSelect);
+    }
+  }
 
   public filterItensMin: any;
   public filterItensMax: any;
@@ -20,15 +29,7 @@ export class WizPaginationComponent implements OnInit {
   public firstNumber: number;
   public lastNumber: number;
 
-
-
   constructor() { }
-
-  ngOnInit() {
-    if (this.list) {
-      this.select(this.valueSelect);
-    }
-  }
 
   select(e) {
     if (this.list.length !== 0) {
@@ -54,4 +55,3 @@ export class WizPaginationComponent implements OnInit {
     this.eventPagination.emit(this.valueSelect);
   }
 }
-

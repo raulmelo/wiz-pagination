@@ -15,7 +15,7 @@
         <div *ngIf="!filterItensMin" class="wiz-initial">
           <div *ngFor="let item of list; index as i;">
             <label (click)="select(item.value)" [ngClass]="{'active' : valueSelect === item.value}" class="item"
-              *ngIf="i+1 <= 3" for="">{{item.value}}</label>
+              *ngIf="i+1 <= 3" >{{item.value}}</label>
           </div>
 
           <div class="wiz-complement">...</div>
@@ -26,21 +26,18 @@
 
         <div *ngIf="filterItensMin" class="wiz-initial">
 
-          <label *ngIf="valueSelect === lastNumber" (click)="select(firstNumber)" class="item"
-            for="">{{firstNumber}}</label>
-          <div *ngIf="valueSelect === lastNumber" class="wiz-complement">...</div>
-          <label *ngIf="minItem" (click)="select(minItem)" class="item" for="">{{minItem}}</label>
+          <label *ngIf="valueSelect >= 4" (click)="select(firstNumber)" class="item">{{firstNumber}}</label>
+          <div *ngIf="valueSelect >= 4" class="wiz-complement">...</div>
+          <label *ngIf="minItem" (click)="select(minItem)" class="item" >{{minItem}}</label>
 
 
-          <label (click)="select(valueSelect)" class="item active" for="">{{valueSelect}}</label>
+          <label (click)="select(valueSelect)" class="item active" >{{valueSelect}}</label>
 
-          <label *ngIf="valueSelect !== lastNumber && lastNumber-1 !== valueSelect" (click)="select(maxItem)"
-            class="item" for="">{{maxItem}}</label>
-
+          <label *ngIf="valueSelect !== lastNumber && lastNumber-1 !== valueSelect" (click)="select(maxItem)" class="item" >{{maxItem}}</label>
           <div *ngIf="valueSelect !== lastNumber && lastNumber !== null " class="wiz-complement">...</div>
 
           <label *ngIf="valueSelect !== lastNumber && lastNumber !== null" (click)="select(lastNumber)" class="item"
-            for="">{{lastNumber}}</label>
+            >{{lastNumber}}</label>
         </div>
       </div>
 
@@ -98,9 +95,9 @@
           </svg>
         </div>
 
-        <label class="item simple-label active-simple" for="">{{valueSelect}}</label>
+        <label class="item simple-label active-simple" >{{valueSelect}}</label>
         <div class="wiz-complement-simple">/</div>
-        <label class="item simple-label" for="">{{list.length}}</label>
+        <label class="item simple-label" >{{list.length}}</label>
 
         <div (click)="select(valueSelect +1)" class="wiz-icon-next">
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">

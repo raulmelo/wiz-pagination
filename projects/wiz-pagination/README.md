@@ -1,77 +1,68 @@
+
+
+![Wiz solucoes](https://syz.wizsolucoes.com.br/assets/header/img/logowiz.svg)
+
 # @wizsolucoes WizPagination
+
+### ✨ [Demonstração](https://syz.wizsolucoes.com.br/component/pagination)
 Modulo Angular 4+
+
+  
 
 ## Configuração do módulo (app.module.ts)
 
-Módulo simples de modal.
+  
+
+Módulo WizPagination.
+
+  
 
 ```ts
-import { WizPaginationModule } from '@wizsolucoes/wiz-pagination';
+
+import { WizPaginationModule } from  '@wizsolucoes/wiz-pagination';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    WizPaginationModule,
-  ]
+declarations: [],
+imports: [
+	WizPaginationModule,
+] 
 
 ```
+
+  
 
 ## Chamando componente no HTML (.component.html)
 
+  
+
 Chamando o componente no html
 
+  
+
 ```html
-<wiz-pagination [list]=itens (eventPagination)="teste($event)" [valueSelect]=3 type="indicator"></wiz-pagination>
+
+<wiz-pagination
+	[total]=80
+	(eventPagination)="teste($event)"
+	[valueSelect]=3
+></wiz-pagination>
+  
 
 
 ```
-## Chamando componente no TS (.component.ts)
 
 
-```ts
-  teste(e) {
-    console.log(e);
-  }
-
-  public itens = [
-    { 'value': 1 },
-    { 'value': 2 },
-    { 'value': 3 },
-    { 'value': 4 },
-    { 'value': 5 },
-    { 'value': 6 },
-    { 'value': 7 },
-  ]
-```
-
-## (eventPagination)="teste($event)":** *Evento emitido*
+## Parâmetros
 
 
-```ts
- (eventPagination)="teste($event)"
-```
+| Props    | Required | default | type | options |  Description                                                     |
+| ---------| -------- | ------- |---------|---------|------------------------------------- |
+| total       | true  | -       | Number  | -       | Total de páginas para para ser  exibido    
+| valueSelect | false |  1      | Number  | -       | Página ativa no momento
+| type        | false | default | String  | 'default','simple', 'selector', 'indicator' | diferente tipos de comportamentos quer proporcionar maior usabilidade e adequação de layout.
 
 
-## valueSelect
-
-
-```ts
- [valueSelect]=1
- [valueSelect]=2
- [valueSelect]=3
- [valueSelect]=4
- [valueSelect]=5...
-
-```
-
-## type="indicator"
-
-
-```ts
-type="default"
-type="simple"
-type="selector"
-type="indicator"
-
-```
-
+  ## Eventos
+  | Nome          | exemplo |  evento     |Descrição |
+  | --------------| ------------------------| -----------| ----------------------------------- |
+  |eventPagination| (eventPagination)="teste($event)" | click       | Evento emitido para o componente pai quando executar uma mudança de página                           
