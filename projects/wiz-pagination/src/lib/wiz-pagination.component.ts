@@ -6,10 +6,10 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./wiz-pagination.component.css"]
 })
 export class WizPaginationComponent {
-  @Input() valueSelect: number = 1;
+ @Input() valueSelect: number = 1;
   @Output() eventPagination: any = new EventEmitter();
   @Input() type: "default" | "simple" | "selector" | "indicator" = 'default';
-
+  private pageInitial = true
   public list: any;
   @Input('total') set total(value: number) {
     this.list = new Array(value).fill(0).map((_: any, index: number) => {
@@ -51,6 +51,10 @@ export class WizPaginationComponent {
       } else {
         this.lastNumber = this.list[this.list.length - 1].value;
       }
+    }
+    if (this.pageInitial) {
+      this.pageInitial = false
+      return
     }
     this.eventPagination.emit(this.valueSelect);
   }
